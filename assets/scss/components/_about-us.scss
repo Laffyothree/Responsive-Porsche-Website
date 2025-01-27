@@ -1,0 +1,67 @@
+/*=============== ABOUT US ===============*/
+.about1{
+   &__container{
+      margin-top: .2rem;
+      padding-top: 1.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      row-gap: 3.5rem;
+   }
+   &__content{
+      row-gap: 5rem;
+      margin-top: 1rem;
+   } 
+   &__card {
+      display: flex;
+      column-gap: 1rem;
+      align-items: center;
+      margin-top: -.3rem;
+   }
+   &__img{
+      width: 150px;
+   }
+   &__title{
+      font-family: var(--second-font);
+      color: var(--first-color);
+      margin-bottom: .5rem;
+   }
+   &__description{
+      font-size: var(--small-font-size);
+   } 
+   &__card:nth-child(2) img{
+      order: -1;
+   } 
+   &__button{
+      justify-self: center;
+      border-radius: .25rem;
+      margin-bottom: 2%;
+   }
+}
+
+.about2{
+   &__container{
+      row-gap: 4rem;
+      margin-top: 2.1rem;
+      margin-bottom: .95rem;
+   }
+   &__title{
+      font-family: var(--second-font);
+      color: var(--first-color);
+      margin-top: 2rem;
+      font-size: var(--h1-font-size);
+   }
+   &__data{
+      position: relative;
+      text-align: center;
+   }
+   &__description{
+      margin-top: .5rem;
+      margin-bottom: 2.3rem;
+   }
+   &__img{
+      width: 500px;
+      margin-top: -3.5rem;
+      border-radius: 8px;
+      justify-self: center;
+   }
+}

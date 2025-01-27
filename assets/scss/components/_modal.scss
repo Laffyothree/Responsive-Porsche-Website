@@ -1,0 +1,84 @@
+/*=============== MODAL ===============*/
+.modal{
+    transition: all 0.3s;
+    z-index: var(--z-modal);
+    visibility: hidden;
+    opacity: 0;
+  
+    &__content,
+    &__content1{
+        position: relative;
+        background-color: var(--container-color);
+        text-align: center;
+        padding: 3rem 2rem 2rem;
+        border-radius: 1rem 1rem 0 0;
+        transition: all 0.3s;
+  
+        /*=== Effect ===*/
+        transform: translateY(10%);
+    }
+  
+    &__img{
+        position: absolute;
+        width: 320px;
+        top: 2.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+  
+    &__img1{
+        position: absolute;
+        width: 350px;
+        top: -1.8rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+  
+    &__img2{
+        position: absolute;
+        width: 350px;
+        top: -0.8rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+  
+    &__title{
+        font-family: var(--second-font);
+        font-size: var(--big-font-size);
+        color: var(--title-color);
+        font-weight: 500;
+        margin-top: 6rem;
+    }
+  
+    &__description{
+        margin-top: 0.2rem;
+        margin-bottom: 1.5rem;
+    }
+  
+    &__button-width{
+        width: 90%;
+    }
+  
+    &__button-link{
+        display: block;
+        margin: 1rem auto 0;
+        background-color: transparent;
+        color: var(--first-color);
+        font-weight: 500;
+    }
+  
+    /* Show modal */
+    &.show-modal{
+        visibility: visible;
+        opacity: 1;
+  
+        &__content{
+        /*=== Effect ===*/
+        transform: translateY(0);
+        }
+    }
+}
+  
