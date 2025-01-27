@@ -296,7 +296,7 @@ img {
 .home__footer, 
 .home__location, 
 .home__social {
-  margin-top: 2.5rem;
+  margin-top: 1.8rem;
   display: flex;
 }
 
@@ -923,6 +923,7 @@ img {
   }
 
   .nav__list {
+    margin-right: -2.5rem;
     flex-direction: row;
     column-gap: 4rem;
   }
