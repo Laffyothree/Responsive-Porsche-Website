@@ -36,13 +36,10 @@ const togglePasswordVisibility = (inputId, iconId) => {
                 alert(`Welcome back, ${data.user.name}!`);
                 error.style.display = 'none';
                 localStorage.setItem('user', JSON.stringify(data));
-
-                // Redirect to another HTML file (e.g., home.html in a pages folder)
-                window.location.replace('Responsive-Porsche-Website/index.html'); // Adjust path accordingly
                 
-                /* Redirect or show the home page
+                // Redirect or show the home page
                 document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-                document.getElementById('home').classList.remove('hidden'); */
+                document.getElementById('home').classList.remove('hidden');
             } else {
                 error.textContent = data.message || 'Invalid email or password.';
                 error.style.display = 'block';
