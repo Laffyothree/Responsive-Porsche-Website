@@ -20,7 +20,7 @@ const togglePasswordVisibility = (inputId, iconId) => {
  const handleLogin = async () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const error = document.querySelector('.login__error'); // Add this error element in your HTML if needed
+    const error = document.getElementById('login-error');
  
     if (email && password) {
         try {
@@ -36,10 +36,9 @@ const togglePasswordVisibility = (inputId, iconId) => {
                 alert(`Welcome back, ${data.user.name}!`);
                 error.style.display = 'none';
                 localStorage.setItem('user', JSON.stringify(data));
-                
+
                 // Redirect or show the home page
-                document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-                document.getElementById('home').classList.remove('hidden');
+                window.location.href = 'index.html';
             } else {
                 error.textContent = data.message || 'Invalid email or password.';
                 error.style.display = 'block';
@@ -53,8 +52,14 @@ const togglePasswordVisibility = (inputId, iconId) => {
         error.style.display = 'block';
     }
  };
- 
 
+ // Triggers the redirecting of page
+ document.addEventListener('DOMContentLoaded', () => {
+    const loginButton = document.getElementById('loginButton');
+    loginButton.addEventListener('click', handleLogin);
+});
+
+ 
  /*=============== HANDLE REGISTRATION FUNCTIONALITY ===============*/
 const handleRegistration = async (event) => {
     event.preventDefault(); // Prevent default form submission
@@ -100,7 +105,7 @@ const handleRegistration = async (event) => {
     }
 };
 
-// Attach the event listener to the form's submit button
+// Triggers the switching of forms
 document.querySelector('.login__register form').addEventListener('submit', handleRegistration);
  
  

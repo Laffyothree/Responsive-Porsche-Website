@@ -1,5 +1,4 @@
 import express from 'express';
-import bcrypt from 'bcrypt'; // For hashing passwords
 import User from '../models/userModel.js';
 
 const router = express.Router();
@@ -15,11 +14,8 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ message: 'Email is already in use.' });
         }
 
-        // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Create and save the new user
-        const newUser = new User({ name, surname, email, password: hashedPassword });
+        // Create and save the new user (without hashing password)
+        const newUser = new User({ name, surname, email, password });
         await newUser.save();
 
         res.status(201).json({ message: 'User registered successfully!' });
@@ -39,9 +35,8 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid email or password.' });
         }
 
-        // Compare the password
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid) {
+        // Compare the password directly
+        if (user.password !== password) {
             return res.status(400).json({ message: 'Invalid email or password.' });
         }
 
@@ -61,37 +56,3 @@ router.post('/login', async (req, res) => {
 });
 
 export default router;
-
-
-
-/* import express from 'express';
-import User from '../models/userModel.js';
-const router = express.Router();
-
-
-router.post('/',async(req, res)=>{
-    const {name, email, password} = req.body;
-    try {
-        const newUser = new User({name, email, password});
-        await newUser.save();
-        res.status(201).json(newUser);
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
-});
-
-router.post('/login', async(req, res)=>{
-    const {email, password} = req.body;
-
-    try {
-        const user = await User.findOne({email});
-        if (user.password !== password) {
-            return res.status(400).json({message: 'Invalid email or password'});
-        }
-        res.json({user});
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
-})
-
-export default router; */
